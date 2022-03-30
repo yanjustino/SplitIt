@@ -1,4 +1,5 @@
 using System;
+using SplitIt;
 using Xunit;
 
 namespace UnitTests;
@@ -9,6 +10,6 @@ public class PluginTests
     public void TheTextShouldNotBeNullOrEmpty()
     {
         string? text = null;
-        Assert.Throws<ArgumentNullException>(() => Split.It(text, 40));
+        Assert.Throws<ArgumentNullException>(() => Split.It(text!, 40));
     }
 }
