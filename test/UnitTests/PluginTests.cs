@@ -41,10 +41,20 @@ public class PluginTests: IClassFixture<PluginTestsFixture>
     [Fact]
     public void TheTextShouldBeSplitIntoThreeLines()
     {
-        var text = "test test test";
-        var expected = "test\r\ntest\r\ntest\r\n";
+        var text = "test1 test2 test3.";
+        var expected = "test1\ntest2\ntest3.";
 
-        var result = text.SplitIt(4);
+        var result = text.SplitIt(5);
         result.Should().Be(expected);
     }    
+    
+    [Fact]
+    public void TheDefaultTextShouldBeSplitInto40CharacterLines()
+    {
+        var text = _fixture.DefaultText;
+        var expected = _fixture.ExpectedTextIn40Character;
+
+        var result = text.SplitIt(40);
+        result.Should().Be(expected);
+    }     
 }
