@@ -1,4 +1,5 @@
 using System;
+using FluentAssertions;
 using SplitIt;
 using Xunit;
 
@@ -36,4 +37,14 @@ public class PluginTests: IClassFixture<PluginTestsFixture>
         var text = _fixture.DefaultText;
         Assert.Throws<ArgumentNullException>(() => text!.SplitIt(limite));
     }
+    
+    [Fact]
+    public void TheTextShouldBeSplitIntoThreeLines()
+    {
+        var text = "test test test";
+        var expected = "test\r\ntest\r\ntest\r\n";
+
+        var result = text.SplitIt(4);
+        result.Should().Be(expected);
+    }    
 }
