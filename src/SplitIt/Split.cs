@@ -14,28 +14,25 @@ public static class Split
 
     private static string SplitText(this string text, int limit)
     {
-        var sb = new StringBuilder();
-        var tokens = text.Split(' ');
-        var line = string.Empty;
-        var sep = string.Empty;
+        var (result, words) = (new StringBuilder(), text.Split(' '));
+        var (currentLine, separator) = (string.Empty, string.Empty);
 
-        for (var i = 0; i < tokens.Length; i++)
+        foreach (var word in words)
         {
-            var next = line + sep + tokens[i];
+            var next = currentLine + separator + word;
+            
             if (next.Length > limit)
             {
-                sb.AppendLine(line);
-                line = string.Empty;
-                sep = string.Empty;
+                result.AppendLine(currentLine);
+                currentLine = string.Empty;
+                separator = string.Empty;
             }
-            
-            line += sep + tokens[i];
-            sep = " ";
+
+            currentLine += separator + word;
+            separator = " ";
         }
 
-        sb.Append(line);
-        
-        return sb.ToString();
-
+        result.Append(currentLine);
+        return result.ToString();
     }
 }
