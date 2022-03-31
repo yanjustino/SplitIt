@@ -27,10 +27,13 @@ public class PluginTests: IClassFixture<PluginTestsFixture>
         Assert.Throws<ArgumentNullException>(() => text!.SplitIt(40));
     }
 
-    [Fact]
-    public void TheLimitOfCharactersShouldGreatThanZero()
+    [Theory]
+    [InlineData(0)]
+    [InlineData(-1)]
+    [InlineData(-10)]
+    public void TheLimitOfCharactersShouldGreatThanZero(int limite)
     {
         var text = _fixture.DefaultText;
-        Assert.Throws<ArgumentNullException>(() => text!.SplitIt(0));
+        Assert.Throws<ArgumentNullException>(() => text!.SplitIt(limite));
     }
 }
