@@ -5,11 +5,11 @@ using Xunit;
 
 namespace UnitTests;
 
-public class PluginTests: IClassFixture<PluginTestsFixture>
+public class Tests: IClassFixture<Fixture>
 {
-    private readonly PluginTestsFixture _fixture;
+    private readonly Fixture _fixture;
 
-    public PluginTests(PluginTestsFixture fixture)
+    public Tests(Fixture fixture)
     {
         _fixture = fixture;
     }
