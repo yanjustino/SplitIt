@@ -44,7 +44,7 @@ public class PluginTests: IClassFixture<PluginTestsFixture>
         const string text = "test1 test2 test3.";
         const string expected = "test1\ntest2\ntest3.";
 
-        var result = text.SplitIt(5);
+        var result = text.SplitIt(6);
         result.Should().Be(expected);
     }    
     

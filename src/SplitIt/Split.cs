@@ -17,8 +17,11 @@ public static class Split
         var (result, words) = (new StringBuilder(), text.Split(' '));
         var (currentLine, separator) = (string.Empty, string.Empty);
 
-        foreach (var word in words)
+        foreach (var (word, index) in words.Select((item, index) => (item, index)))
         {
+            if (word.Length > limit)
+                throw new ArgumentOutOfRangeException();
+            
             var next = currentLine + separator + word;
             
             if (next.Length > limit)
