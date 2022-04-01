@@ -1,3 +1,6 @@
+# SplitIT
+SplitIT is a C# implementation of [VigilTech code chalenge](https://github.com/VigilTech/backend-challenge). The following section explain details about this challenge.
+
 # backend-challenge
 
 After reading the Linux kernel coding style, you discover the magic of having lines of code with a maximum of 80 characters each.
