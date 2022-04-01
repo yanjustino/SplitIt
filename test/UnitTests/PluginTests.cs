@@ -41,8 +41,8 @@ public class PluginTests: IClassFixture<PluginTestsFixture>
     [Fact]
     public void TheTextShouldBeSplitIntoThreeLines()
     {
-        var text = "test1 test2 test3.";
-        var expected = "test1\ntest2\ntest3.";
+        const string text = "test1 test2 test3.";
+        const string expected = "test1\ntest2\ntest3.";
 
         var result = text.SplitIt(5);
         result.Should().Be(expected);
@@ -56,5 +56,13 @@ public class PluginTests: IClassFixture<PluginTestsFixture>
 
         var result = text.SplitIt(40);
         result.Should().Be(expected);
+    }  
+    
+    [Fact]
+    public void TheTextShouldNotBeSplit()
+    {
+        const string text = "test1 test2 test3.";
+        
+        Assert.Throws<ArgumentOutOfRangeException>(() => text!.SplitIt(2));
     }     
 }
